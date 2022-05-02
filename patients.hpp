@@ -2,7 +2,6 @@
 #define PATIENTS_HPP
 
 #include "patient.hpp"
-#include "patients.txt"
 
 #include <string>
 

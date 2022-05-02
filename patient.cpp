@@ -14,10 +14,9 @@ Patient::Patient(const std::string &text) {
 	std::string gender;
 	
 	// CREATE STRINGSTREAM FROM FUNCTION PARAMETER
-	stringstream sstream(text);
+	istringstream sstream(text);
 
 	getline(sstream, name, ',');
-	sstream.ignore(1);
 	getline(sstream, age,  ',');
 	sstream.ignore(1);
 	getline(sstream, gender);

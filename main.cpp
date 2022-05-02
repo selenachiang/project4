@@ -16,9 +16,13 @@ int main() {
 	std::cout << p.getAge() << std::endl;
 	std::cout << p.getGender() << std::endl;
 
-	Patients ps = new Patients();
-	//ps.load("patients.txt");
-	//std::cout << ps.getCount() << std::endl;
+
+	std::string filename = "patients.txt";
+
+	Patients ps;
+	ps.load(filename);
+	ps.printAll();
+
 
 	return EXIT_SUCCESS;
 }

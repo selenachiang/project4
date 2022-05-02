@@ -1,5 +1,6 @@
 #include "patients.hpp"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -17,13 +18,22 @@ bool Patients::load(const std::string &filename) {
 	ifstream read;
 	read.open(filename);
 
-	this->count = stoi(getline(read));	
+	if (read.is_open) {
+		string patientCount;
+		getline(read, patientCount);
+		this->count = stoi(patientCount);
 
-	//string patient;
-	//while (read) {
-	//	getline(read, patient);
-		
-	read.close();
+		this->patients = new Patient[this->count];
+
+		for (int i = 0; i < this->count; i++) {
+			string line;
+			getline(read,line);
+			this->patients[i] = Patient(line);
+		}
+		read.close();
+		return true;
+	}
+	return false;
 }
 
 //bool Patients::save(const std::string &filename);
@@ -32,13 +42,13 @@ bool Patients::load(const std::string &filename) {
 
 //std::string Patients::getPatientInfo(int id) const;
 
-int Patients::getCount() const {
+const int Patients::getCount() const {
 	return this->count;
 }
 
 void Patients::printAll() const {
-	for (int i = 0; i < count; i++) {
-		cout << this->patients[i]->info() << endl;
+	for (int i = 0; i < this->count; i++) {
+		cout << this->patients[i].info() << endl;
 	}
 	cout << endl;
 }
