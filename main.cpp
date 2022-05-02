@@ -1,12 +1,12 @@
-//#include "text-menu-app.hpp"
+#include "text-menu-app.hpp"
 
-#include "patients.hpp"
+//#include "patients.hpp"
 //remove
 #include <iostream>
 
 int main() {
-	//TextMenuApp menu;
-	//menu.run();
+	TextMenuApp menu;
+	menu.run();
 
 	std::string patient = "Alan Harry, 24, Male";
 	Patient p(patient);
@@ -23,6 +23,11 @@ int main() {
 	ps.load(filename);
 	ps.printAll();
 
+	std::string output = "output.txt";
+	ps.save(output);
+
+	ps.updatePatient(1, "Bob", 100, "Female");
+	std::cout << ps.getPatientInfo(1);
 
 	return EXIT_SUCCESS;
 }

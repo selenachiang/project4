@@ -21,11 +21,11 @@ class Patients {
 
 		bool load(const std::string &filename);
 
-		//bool save(const std::string &filename);
+		bool save(const std::string &filename);
 
-		//void updatePatient(int id, const std::string &name, int age, std::string gender);
+		void updatePatient(int id, const std::string &name, int age, std::string gender);
 
-		//std::string getPatientInfo(int id) const;
+		std::string getPatientInfo(int id) const;
 
 		const int getCount() const;
 

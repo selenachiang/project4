@@ -2,7 +2,6 @@
 #define TEXT_MENU_APP_HPP
 
 #include "patients.hpp"
-#include <string>
 
 class TextMenuApp {
 

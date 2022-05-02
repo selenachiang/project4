@@ -18,7 +18,7 @@ bool Patients::load(const std::string &filename) {
 	ifstream read;
 	read.open(filename);
 
-	if (read.is_open) {
+	if (read.is_open()) {
 		string patientCount;
 		getline(read, patientCount);
 		this->count = stoi(patientCount);
@@ -36,11 +36,33 @@ bool Patients::load(const std::string &filename) {
 	return false;
 }
 
-//bool Patients::save(const std::string &filename);
+bool Patients::save(const std::string &filename) {
+	ofstream write;
+	write.open(filename);
+	if (write.is_open()) {
+		write << to_string(this->count) << "\n";
+		
+		for (int i = 0; i < this->count; i++) {
+			write << this->patients[i].getName() << ", ";
+			write << this->patients[i].getAge() << ", ";
+			write << this->patients[i].getGender() << "\n";
+		}
+		write << "\n";
 
-//void Patients::updatePatient(int id, const std::string &name, int age, std::string gender);
+		// CLOSE OUTPUT FILE
+		write.close();
+		return true;
+	}
+	return false;
+}
 
-//std::string Patients::getPatientInfo(int id) const;
+void Patients::updatePatient(int id, const std::string &name, int age, std::string gender) {
+	this->patients[id] = Patient(name, age, gender);
+}
+
+std::string Patients::getPatientInfo(int id) const {
+	return this->patients[id].info();
+}
 
 const int Patients::getCount() const {
 	return this->count;
@@ -48,7 +70,6 @@ const int Patients::getCount() const {
 
 void Patients::printAll() const {
 	for (int i = 0; i < this->count; i++) {
-		cout << this->patients[i].info() << endl;
+		cout << i << ": " << this->patients[i].info() << endl;
 	}
-	cout << endl;
 }

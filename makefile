@@ -6,7 +6,7 @@ RM=rm -rf
 .PHONY: clean
 
 # Target rules
-main: main.o patient.o patients.o #text-menu-app.o patients.o
+main: main.o patient.o patients.o text-menu-app.o
 	$(CXX) -o $@ $^
 
 test: test.o patient.o patients.o
